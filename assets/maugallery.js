@@ -295,7 +295,7 @@
 				return;
 			}
 			$(".active-tag").removeClass("active active-tag");
-			$(this).addClass("active-tag");
+			$(this).addClass("active active-tag"); // ajoute active en plus
 
 			var tag = $(this).data("images-toggle");
 
@@ -310,3 +310,11 @@
 		},
 	};
 })(jQuery);
+const filters = document.querySelectorAll(".nav-link");
+
+filters.forEach((filter) => {
+	filter.addEventListener("click", () => {
+		filters.forEach((f) => f.classList.remove("active")); // Enlève "active" à tous
+		filter.classList.add("active"); // Ajoute "active" au bouton cliqué
+	});
+});
