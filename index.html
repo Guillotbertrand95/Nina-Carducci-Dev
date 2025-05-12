@@ -17,7 +17,6 @@
 			content="Bienvenue sur mon site de photographie : portraits, paysages et émotions capturées à chaque instant."
 		/>
 
-		<!-- Open Graph (Facebook, LinkedIn...) -->
 		<meta
 			property="og:title"
 			content="Nina Carducci – Photographe à Bordeaux"
@@ -33,7 +32,6 @@
 		<meta property="og:url" content="https://nina-carducci.com/" />
 		<meta property="og:type" content="website" />
 
-		<!-- Twitter Cards -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta
 			name="twitter:title"
@@ -158,38 +156,40 @@
 			</div>
 		</header>
 		<main>
-			<div
-				itemscope
-				itemtype="https://schema.org/localBusiness"
-				class="hidden-for-users"
-			>
-				<h2><span itemprop="name">Nina Carducci</span></h2>
-				<span itemprop="description"
-					>Photographe spécialisée en portraits, paysages et émotions
-					capturées à chaque instant.</span
-				>
+			<section class="schema" aria-hidden="true">
 				<div
-					itemprop="address"
 					itemscope
-					itemtype="https://schema.org/PostalAddress"
+					itemtype="https://schema.org/localBusiness"
+					class="hidden-for-users"
+					aria-hidden="true"
 				>
-					<span itemprop="streetAddress"
-						>68 avenue Alsace-Lorraine</span
+					<h2><span itemprop="name">Nina Carducci</span></h2>
+					<span itemprop="description"
+						>Photographe spécialisée en portraits, paysages et
+						émotions capturées à chaque instant.</span
 					>
-					<span itemprop="addressLocality">Bordeaux</span>,
-					<span itemprop="postalCode">33200</span>
-					<span itemprop="addressCountry">FR</span>
+					<div
+						itemprop="address"
+						itemscope
+						itemtype="https://schema.org/PostalAddress"
+					>
+						<span itemprop="streetAddress"
+							>68 avenue Alsace-Lorraine</span
+						>
+						<span itemprop="addressLocality">Bordeaux</span>,
+						<span itemprop="postalCode">33200</span>
+						<span itemprop="addressCountry">FR</span>
+					</div>
+					<span itemprop="telephone">+33 5 56 67 78 89</span>
+					<span itemprop="openingHours">Mo-Fr 10:00-19:00</span>
+					<span itemprop="priceRange">50€ - 400€</span>
+					<meta
+						itemprop="image"
+						content="https://nina-carducci.com/.assets/images/nina.webp"
+					/>
 				</div>
-				<span itemprop="telephone">+33 5 56 67 78 89</span>
-				<span itemprop="openingHours">Mo-Fr 10:00-19:00</span>
-				<span itemprop="priceRange">50€ - 400€</span>
-				<meta
-					itemprop="image"
-					content="https://nina-carducci.com/.assets/images/nina.webp"
-				/>
-			</div>
-
-			<div id="about">
+			</section>
+			<article id="about">
 				<div class="picture left">
 					<img
 						src="./assets/images/nina.webp"
@@ -197,13 +197,13 @@
 					/>
 				</div>
 				<div id="about-me">
-					<h3 class="about-me__title">A propos de moi</h3>
-					<h6 class="about-me__introduction">
+					<h2 class="about-me__title">A propos de moi</h2>
+					<h3 class="about-me__introduction">
 						Devenir photographe était pour moi une évidence. Comme
 						si j’y étais prédestiné. Saisir un moment, une émotion,
 						une situation, un endroit, une lumière et les rendre
 						immortels, voilà ce qui me fait vibrer.
-					</h6>
+					</h3>
 					<p>
 						Nous passons notre vie à chercher le bonheur, et lorsque
 						nous y touchons, nous n’avons qu’une envie : le figer au
@@ -217,7 +217,7 @@
 						chaque fois que vous poserez les yeux sur vos photos.
 					</p>
 				</div>
-			</div>
+			</article>
 
 			<div id="gallery">
 				<h2 class="title">Portfolio</h2>
@@ -279,25 +279,26 @@
 						/>
 					</div>
 				</div>
-				<div class="quote">
+
+				<article class="quote">
 					<figure>
 						<blockquote>
-							<h5 class="quote__text">
+							<p class="quote__text">
 								Un portrait n’est pas une ressemblance. Dès lors
 								qu’une émotion ou qu’un fait est traduit en
 								photo, il cesse d’être un fait pour devenir une
 								opinion. L’inexactitude n’existe pas en
 								photographie. Toutes les photos sont exactes.
 								Aucune d’elles n’est la vérité.
-							</h5>
+							</p>
 						</blockquote>
 						<figcaption class="quote__author">
 							- Richard Avedon
 						</figcaption>
 					</figure>
-				</div>
+				</article>
 			</div>
-			<div id="services">
+			<article id="services">
 				<h3 class="title">Mes services</h3>
 				<div class="container">
 					<div class="service">
@@ -343,8 +344,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="quote">
+			</article>
+			<article class="quote">
 				<figure>
 					<blockquote>
 						<h3 class="quote__text">
@@ -358,12 +359,11 @@
 						- Richard Avedon
 					</figcaption>
 				</figure>
-			</div>
+			</article>
 		</main>
 		<footer>
 			<div id="contact">
 				<div class="container">
-					<!-- AJOUT ICI -->
 					<div class="form-container">
 						<h3>Une question ? Une demande de devis ?</h3>
 						<p>

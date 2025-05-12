@@ -129,125 +129,62 @@
 			$(`#${lightboxId}`).modal("toggle");
 		},
 		prevImage() {
-			let activeImage = null;
-			// Trouve l'image actuellement affichée dans la modale
-			$("img.gallery-item").each(function () {
-				if ($(this).attr("src") === $(".lightboxImage").attr("src")) {
-					activeImage = $(this);
-				}
-			});
-
+			let currentSrc = $(".lightboxImage").attr("src");
 			let activeTag = $(".tags-bar span.active-tag").data(
 				"images-toggle"
 			);
-			let imagesCollection = [];
 
-			// Filtrer les images selon le tag actif
-			if (activeTag === "all") {
-				$(".item-column").each(function () {
-					if ($(this).children("img").length) {
-						imagesCollection.push($(this).children("img"));
-					}
-				});
-			} else {
-				$(".item-column").each(function () {
-					if (
-						$(this).children("img").data("gallery-tag") ===
-						activeTag
-					) {
-						imagesCollection.push($(this).children("img"));
-					}
-				});
-			}
+			let imagesCollection = $("img.gallery-item")
+				.filter(function () {
+					return (
+						activeTag === "all" ||
+						$(this).data("gallery-tag") === activeTag
+					);
+				})
+				.toArray();
 
-			let index = 0,
-				prev = null;
+			if (imagesCollection.length === 0) return;
 
-			// Recherche l'image active dans la collection
-			$(imagesCollection).each(function (i) {
-				if ($(activeImage).attr("src") === $(this).attr("src")) {
-					index = i;
-				}
-			});
+			let index = imagesCollection.findIndex(
+				(img) => $(img).attr("src") === currentSrc
+			);
+			if (index === -1) return;
 
-			// Vérifie que l'index est valide et que la collection contient des images
-			if (
-				index === undefined ||
-				index < 0 ||
-				imagesCollection.length === 0
-			) {
-				console.log(
-					"Erreur : index non valide ou collection d'images vide"
-				);
-				return; // Arrêter la fonction si l'index ou la collection sont incorrects
-			}
-
-			// Trouve l'image précédente en utilisant l'index
-			prev =
-				imagesCollection[index - 1] ||
-				imagesCollection[imagesCollection.length - 1]; // Si aucune image précédente, retourne la dernière image
-
-			// Mise à jour de l'image dans la modale
-			$(".lightboxImage").attr("src", $(prev).attr("src"));
+			let prevIndex =
+				(index - 1 + imagesCollection.length) % imagesCollection.length;
+			$(".lightboxImage").attr(
+				"src",
+				$(imagesCollection[prevIndex]).attr("src")
+			);
 		},
 
 		nextImage() {
-			let activeImage = null;
-			$("img.gallery-item").each(function () {
-				if ($(this).attr("src") === $(".lightboxImage").attr("src")) {
-					activeImage = $(this);
-				}
-			});
-
+			let currentSrc = $(".lightboxImage").attr("src");
 			let activeTag = $(".tags-bar span.active-tag").data(
 				"images-toggle"
 			);
-			let imagesCollection = [];
 
-			if (activeTag === "all") {
-				$(".item-column").each(function () {
-					if ($(this).children("img").length) {
-						imagesCollection.push($(this).children("img"));
-					}
-				});
-			} else {
-				$(".item-column").each(function () {
-					if (
-						$(this).children("img").data("gallery-tag") ===
-						activeTag
-					) {
-						imagesCollection.push($(this).children("img"));
-					}
-				});
-			}
+			let imagesCollection = $("img.gallery-item")
+				.filter(function () {
+					return (
+						activeTag === "all" ||
+						$(this).data("gallery-tag") === activeTag
+					);
+				})
+				.toArray();
 
-			let index = 0,
-				next = null;
+			if (imagesCollection.length === 0) return;
 
-			// Recherche l'image active dans la collection
-			$(imagesCollection).each(function (i) {
-				if ($(activeImage).attr("src") === $(this).attr("src")) {
-					index = i;
-				}
-			});
+			let index = imagesCollection.findIndex(
+				(img) => $(img).attr("src") === currentSrc
+			);
+			if (index === -1) return;
 
-			// Vérifie que l'index est valide et que la collection contient des images
-			if (
-				index === undefined ||
-				index < 0 ||
-				imagesCollection.length === 0
-			) {
-				console.log(
-					"Erreur : index non valide ou collection d'images vide"
-				);
-				return; // Arrêter la fonction si l'index ou la collection sont incorrects
-			}
-
-			// Trouve l'image suivante en utilisant l'index
-			next = imagesCollection[index + 1] || imagesCollection[0]; // Si aucune image suivante, retourne la première image
-
-			// Mise à jour de l'image dans la modale
-			$(".lightboxImage").attr("src", $(next).attr("src"));
+			let nextIndex = (index + 1) % imagesCollection.length;
+			$(".lightboxImage").attr(
+				"src",
+				$(imagesCollection[nextIndex]).attr("src")
+			);
 		},
 
 		createLightBox(gallery, lightboxId, navigation) {
