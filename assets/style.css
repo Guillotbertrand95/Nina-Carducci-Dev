@@ -47,7 +47,10 @@ body {
 .social-link img {
 	width: 20px;
 }
-
+.carousel-item-prev {
+	font-size: 60%;
+	color: #000;
+}
 #about {
 	display: flex;
 	background-color: #f6d2b8;
@@ -55,7 +58,9 @@ body {
 	padding-block: 100px;
 	position: relative;
 }
-
+.about-me-title {
+	color: #000;
+}
 .picture.left::before {
 	content: " ";
 	background-color: #e5975f;
